@@ -1,0 +1,26 @@
+x-podman:
+    in_pod: false
+
+services:
+    buckets:
+        build:
+            context: .
+            dockerfile: Containerfile
+        image: localhost/buckets:latest
+        restart: unless-stopped
+        userns_mode: keep-id
+        user: "${HOST_UID:-1000}:${HOST_GID:-1000}"
+        read_only: true
+        environment:
+            TYPESAFE_API_KEY: "${TYPESAFE_API_KEY:-}"
+        volumes:
+            - ./config.toml:/app/config.toml:ro,z
+            - ./google:/app/google:ro,z
+            - ./state:/app/state:z
+        tmpfs:
+            - /tmp
+        security_opt:
+            - no-new-privileges
+        cap_drop:
+            - ALL
+        stop_grace_period: 45s

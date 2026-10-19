@@ -1,0 +1,23 @@
+{
+  "name": "buckets",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "bun run src/main.ts",
+    "auth": "bun run src/auth.ts",
+    "check": "tsc --noEmit && biome check .",
+    "test": "bun test",
+    "format": "biome check --write ."
+  },
+  "dependencies": {
+    "@typesafe-ai/sdk": "^0.6.0",
+    "google-auth-library": "^11.2.0",
+    "zod": "^4.6.6"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.15",
+    "@types/bun": "^1.4.2",
+    "typescript": "^7.0.2"
+  }
+}

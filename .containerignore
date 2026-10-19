@@ -1,0 +1,10 @@
+.git
+.agents
+.aws
+.codex
+.env
+config.toml
+google
+state
+node_modules
+coverage

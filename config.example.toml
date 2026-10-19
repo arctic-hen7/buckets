@@ -1,0 +1,46 @@
+# Copy to config.toml and replace the example identities and Google project
+threshold = 0.75
+model = "jev-latest"
+
+# Accounts may share a project; add another table for a separate OAuth audience
+[google.main]
+project_id = "your-google-project"
+oauth_client = "google/main-oauth.json"
+subscriber_credentials = "google/main-subscriber.json"
+topic = "buckets-gmail"
+subscription = "buckets-gmail"
+
+[[accounts]]
+id = "personal"
+email = "you@gmail.com"
+project = "main"
+aliases = []
+
+[[accounts]]
+id = "work"
+email = "you@company.com"
+project = "main"
+aliases = []
+
+[[tags]]
+id = "marketing"
+label = "Buckets/Marketing"
+description = "Newsletters, advertising, promotions, and unsolicited sales outreach"
+
+[[tags]]
+id = "reply"
+label = "Buckets/Reply"
+description = "A person expects a response from me; exclude automated notices and rhetorical questions"
+
+[[tags]]
+id = "task"
+label = "Buckets/Task"
+description = "Requires an action beyond replying, such as reviewing a document, paying an invoice, or completing requested work"
+
+# Exact sender matching is optional and makes no Jev request for this tag
+# Remove this example if it is not useful
+[[tags]]
+id = "alice"
+label = "Buckets/People/Alice"
+from = ["alice@example.com"]
+accounts = ["personal"]
